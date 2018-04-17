@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./nprogress.css">
+</head>
+<body>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="./nprogress.js"></script>
+    <script>
+    NProgress.configure({
+        showSpinner:false
+    })
+    // $(window).ajaxStart(function(){
+    //     console.log('设置当前第一个AJAX请求开始时执行的处理函数');
+    // });
+    // $(window).ajaxSend(function () {
+    //     console.log('设置在AJAX请求被发送前执行的处理函数。');
+    //     })
+    // $(window).ajaxComplete(function () {
+    //     console.log('设置当AJAX请求完成(无论成功或失败)时执行的处理函数');
+    //     })
+    // $(window).ajaxStop(function(){
+    //     console.log('设置当前最后一个AJAX请求结束时执行的处理函数');
+    // })
+
+    $(window).ajaxStart(function () {
+            NProgress.start();
+        });
+    $(window).ajaxStop(function () {
+            NProgress.done();
+        })
+
+    $.ajax({
+            type: 'get',
+            url: './a.json',
+            data: {},//{key1:value1}
+            dataType: 'json',
+            success: function (data){
+                console.log(data);
+            }
+    })
+    </script>
+</body>
+</html>

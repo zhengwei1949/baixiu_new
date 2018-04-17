@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sign in &laquo; Admin</title>
+  <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script type="text/javascript" src="../assets/vendors/jquery/jquery.js"></script>
+</head>
+
+<body>
+  <div class="login">
+    <form action="check.php" method="post" class="login-wrap">
+      <img class="avatar" src="../assets/img/default.png">
+      <!-- 有错误信息时展示 -->
+      <!-- <div class="alert alert-danger">
+        <strong>错误！</strong> 用户名或密码错误！
+      </div> -->
+      <div class="form-group">
+        <label for="email" class="sr-only">邮箱</label>
+        <input id="email" type="email" name="email" class="form-control" placeholder="邮箱" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">密码</label>
+        <input id="password" type="text" name="pwd" class="form-control" placeholder="密码">
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">验证码</label>
+        <input id="code" type="text" name="code" class="form-control" placeholder="验证码">
+        <img src="include/verify.php" onclick="changeImg(this)" />
+      </div>
+      <a class="btn btn-primary btn-block" href="javascript:;">登 录</a>
+    </form>
+  </div>
+  <script type="text/javascript">
+    //obj是htmlImage对象
+    function changeImg(obj) {
+      //alert(obj);
+      //增加随机后缀，就是每次更新的地址都不一样
+      obj.src = 'include/verify.php?_=' + Math.random();
+    }
+    //获取a标签对象,绑定点击事件
+    $('.btn-primary').click(function () {
+      //获取form标签对象，调用submit方法提交表单
+      $('form').submit();
+    })
+  </script>
+</body>
+
+</html>
